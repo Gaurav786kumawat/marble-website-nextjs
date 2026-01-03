@@ -92,7 +92,7 @@ export default function WhyUs() {
                     </p>
 
                     <a
-                        href="https://wa.me/9950703030"
+                        href="https://wa.me/+919950703030"
                         className="mt-6 inline-block bg-green-600 hover:bg-green-700 transition text-white px-6 py-3 rounded-lg shadow shadow-green-900/40"
                     >
                         Chat With Us on WhatsApp
@@ -104,3 +104,4 @@ export default function WhyUs() {
         </main>
     );
 }
+
