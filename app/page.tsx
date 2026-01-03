@@ -193,7 +193,7 @@ export default function Home() {
 
       {/* FLOATING WHATSAPP */}
       <a
-        href="https://wa.me/9950703030"
+        href="https://wa.me/+919950703030"
         className="fixed bottom-5 right-5 bg-green-600 hover:bg-green-700 transition text-white p-4 rounded-full shadow-xl shadow-green-900/40"
       >
         <MessageCircle />
