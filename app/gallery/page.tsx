@@ -23,53 +23,24 @@ export default function Gallery() {
         "/gallery/img15.jpeg",
     ];
 
-    // ------------------ STATE ------------------
     const [index, setIndex] = useState<number | null>(null);
     const [page, setPage] = useState(1);
 
     const perPage = 12;
     const totalPages = Math.ceil(images.length / perPage);
-
     const paginated = images.slice((page - 1) * perPage, page * perPage);
 
-    // ------------------ ESC / ARROWS ------------------
-    useEffect(() => {
-        const handler = (e: KeyboardEvent) => {
-            if (e.key === "Escape") setIndex(null);
-            if (e.key === "ArrowRight" && index !== null && index < images.length - 1)
-                setIndex(index + 1);
-            if (e.key === "ArrowLeft" && index !== null && index > 0)
-                setIndex(index - 1);
-        };
-
-        window.addEventListener("keydown", handler);
-        return () => window.removeEventListener("keydown", handler);
-    }, [index]);
-
-    // ------------------ SCROLL LOCK ------------------
+    // disable page scroll when lightbox open
     useEffect(() => {
         document.body.style.overflow = index !== null ? "hidden" : "auto";
     }, [index]);
-
-    // ------------------ SWIPE ------------------
-    let startX = 0;
-    let endX = 0;
-    const touchStart = (e: any) => (startX = e.touches[0].clientX);
-    const touchMove = (e: any) => (endX = e.touches[0].clientX);
-    const touchEnd = () => {
-        if (startX - endX > 60 && index !== null && index < images.length - 1)
-            setIndex(index + 1);
-
-        if (endX - startX > 60 && index !== null && index > 0)
-            setIndex(index - 1);
-    };
 
     return (
         <main className="min-h-screen bg-gray-950 text-white">
 
             {/* HEADER */}
             <section className="border-b border-gray-800">
-                <div className="max-w-7xl mx-auto px-4 py-14">
+                <div className="max-w-7xl mx-auto px-4 py-10 md:py-14">
                     <p className="text-yellow-400 font-semibold tracking-wide mb-2">
                         Gallery
                     </p>
@@ -85,37 +56,38 @@ export default function Gallery() {
             </section>
 
             {/* GRID */}
-            <section className="max-w-7xl mx-auto px-4 py-14">
-                <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <section className="max-w-7xl mx-auto px-4 py-10 md:py-14">
+
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
 
                     {paginated.map((src, i) => (
-                        <div
+                        <button
                             key={i}
-                            className="rounded-xl overflow-hidden border border-gray-800 bg-gray-900 cursor-pointer shadow hover:shadow-xl transition group"
+                            className="rounded-xl overflow-hidden border border-gray-800 bg-gray-900 shadow hover:shadow-yellow-500/10 hover:border-yellow-500/30 transition group"
                             onClick={() => setIndex((page - 1) * perPage + i)}
                         >
-                            <div className="relative w-full h-56">
+                            {/* FIXED 4:3 RATIO BOX — ALWAYS PERFECT */}
+                            <div className="relative w-full pb-[75%]">
                                 <Image
                                     src={src}
                                     alt="Marble"
                                     fill
                                     className="object-cover group-hover:scale-105 transition duration-300"
-                                    placeholder="blur"
-                                    blurDataURL="/blur-placeholder.jpg"
+                                    sizes="(max-width:768px) 50vw, 25vw"
                                 />
                             </div>
-                        </div>
+                        </button>
                     ))}
 
                 </div>
 
                 {/* PAGINATION */}
-                <div className="flex justify-center gap-2 mt-10">
+                <div className="flex justify-center gap-2 mt-10 flex-wrap">
 
                     <button
                         disabled={page === 1}
                         onClick={() => setPage(page - 1)}
-                        className="px-3 py-1 rounded bg-gray-800 border border-gray-700 disabled:opacity-40"
+                        className="px-4 py-2 rounded bg-gray-800 border border-gray-700 disabled:opacity-40"
                     >
                         Prev
                     </button>
@@ -124,7 +96,7 @@ export default function Gallery() {
                         <button
                             key={i}
                             onClick={() => setPage(i + 1)}
-                            className={`px-3 py-1 rounded border 
+                            className={`px-4 py-2 rounded border 
                 ${page === i + 1
                                     ? "bg-yellow-500 text-black border-yellow-500"
                                     : "bg-gray-800 border-gray-700"
@@ -137,25 +109,24 @@ export default function Gallery() {
                     <button
                         disabled={page === totalPages}
                         onClick={() => setPage(page + 1)}
-                        className="px-3 py-1 rounded bg-gray-800 border border-gray-700 disabled:opacity-40"
+                        className="px-4 py-2 rounded bg-gray-800 border border-gray-700 disabled:opacity-40"
                     >
                         Next
                     </button>
+
                 </div>
             </section>
 
             {/* LIGHTBOX */}
             {index !== null && (
-                <div
-                    className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-50"
-                    onTouchStart={touchStart}
-                    onTouchMove={touchMove}
-                    onTouchEnd={touchEnd}
-                >
+                <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-[9999] flex items-center justify-center">
+
                     {/* CLOSE */}
                     <button
                         onClick={() => setIndex(null)}
-                        className="absolute top-6 right-6 bg-white/10 hover:bg-white/20 text-white p-2 rounded-lg"
+                        className="fixed top-4 right-4 md:top-6 md:right-6 
+                 z-[10050] bg-white/15 hover:bg-white/25 
+                 text-white p-3 md:p-3.5 rounded-full"
                     >
                         <X size={22} />
                     </button>
@@ -164,7 +135,9 @@ export default function Gallery() {
                     {index > 0 && (
                         <button
                             onClick={() => setIndex(index - 1)}
-                            className="absolute left-6 bg-white/10 hover:bg-white/20 text-white p-2 rounded-lg"
+                            className="fixed left-3 md:left-6 top-1/2 -translate-y-1/2
+                   z-[10050] bg-white/15 hover:bg-white/25 
+                   p-3 md:p-4 rounded-full text-white"
                         >
                             <ChevronLeft size={26} />
                         </button>
@@ -174,24 +147,28 @@ export default function Gallery() {
                     {index < images.length - 1 && (
                         <button
                             onClick={() => setIndex(index + 1)}
-                            className="absolute right-6 bg-white/10 hover:bg-white/20 text-white p-2 rounded-lg"
+                            className="fixed right-3 md:right-6 top-1/2 -translate-y-1/2
+                   z-[10050] bg-white/15 hover:bg-white/25 
+                   p-3 md:p-4 rounded-full text-white"
                         >
                             <ChevronRight size={26} />
                         </button>
                     )}
 
-                    {/* IMAGE */}
-                    <div className="relative max-w-5xl max-h-[85vh] w-full h-full flex items-center justify-center px-6">
+                    {/* IMAGE BOX */}
+                    <div className="relative w-[94vw] md:w-[90vw] max-w-5xl h-[80vh] z-[10000]">
                         <Image
                             src={images[index]}
                             alt="Zoom View"
-                            width={1400}
-                            height={900}
-                            className="rounded-xl shadow-2xl border border-gray-800 object-contain"
+                            fill
+                            className="object-contain rounded-xl border border-gray-800 shadow-2xl"
+                            sizes="100vw"
+                            priority
                         />
                     </div>
                 </div>
             )}
+
         </main>
     );
 }
