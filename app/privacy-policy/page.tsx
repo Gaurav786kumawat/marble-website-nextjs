@@ -113,8 +113,8 @@ export default function PrivacyPolicy() {
                                 <>
                                     <p>For any questions regarding this Privacy Policy, you can contact us at:</p>
                                     <p className="mt-3 text-sm">
-                                        <strong>Email:</strong> info@example.com <br />
-                                        <strong>Phone:</strong> +91 XXXXXXXXXX <br />
+                                        <strong>Email:</strong> ajaysharma@gmail.com <br />
+                                        <strong>Phone:</strong> +91 9950703030 <br />
                                         <strong>Location:</strong> Ujjain, Madhya Pradesh, India
                                     </p>
                                 </>
@@ -136,3 +136,4 @@ export default function PrivacyPolicy() {
         </main>
     );
 }
+
