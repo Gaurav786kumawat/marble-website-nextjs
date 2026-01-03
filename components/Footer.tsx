@@ -70,7 +70,7 @@ export default function Footer() {
                     </p>
 
                     <p className="text-sm mt-1">
-                        📩 ajaysharma@example.com
+                        📩 ajaysharma@gmail.com
                     </p>
                 </div>
             </div>
@@ -82,3 +82,4 @@ export default function Footer() {
         </footer>
     );
 }
+
