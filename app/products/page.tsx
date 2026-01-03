@@ -73,7 +73,7 @@ export default function Products() {
                                 </p>
 
                                 <a
-                                    href="https://wa.me/9950703030"
+                                    href="https://wa.me/+919950703030"
                                     className="mt-4 inline-block text-sm bg-green-600 hover:bg-green-700 transition text-white px-4 py-2 rounded-lg shadow shadow-green-900/40"
                                 >
                                     Get Best Price
@@ -89,3 +89,4 @@ export default function Products() {
         </main>
     );
 }
+
