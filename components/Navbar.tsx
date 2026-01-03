@@ -85,13 +85,14 @@ export default function Navbar() {
                     <Link href="/" onClick={() => setOpen(false)}>Home</Link>
                     <Link href="/products" onClick={() => setOpen(false)}>Products</Link>
                     <Link href="/why-us" onClick={() => setOpen(false)}>Why Us</Link>
+                    <Link href="/about" onClick={() => setOpen(false)}>About Us</Link>
                     <Link href="/calculator" onClick={() => setOpen(false)}>Calculator</Link>
                     <Link href="/gallery" onClick={() => setOpen(false)}>Gallery</Link>
                     <Link href="/faq" onClick={() => setOpen(false)}>FAQ</Link>
                     <Link href="/contact" onClick={() => setOpen(false)}>Contact</Link>
 
                     <a
-                        href="https://wa.me/919950703030"
+                        href="https://wa.me/+919950703030"
                         className="mt-4 bg-green-600 hover:bg-green-700 transition text-white px-4 py-2 rounded-lg flex items-center gap-2 shadow shadow-green-900/30"
                         onClick={() => setOpen(false)}
                     >
@@ -102,3 +103,4 @@ export default function Navbar() {
         </>
     );
 }
+
