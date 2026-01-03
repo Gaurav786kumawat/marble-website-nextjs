@@ -27,7 +27,7 @@ export default function Home() {
 
             <div className="flex gap-3 mt-7">
               <a
-                href="https://wa.me/9950703030"
+                href="https://wa.me/+919950703030"
                 className="bg-green-600 hover:bg-green-700 transition text-white px-5 py-3 rounded-lg flex items-center gap-2 text-sm shadow-lg shadow-green-900/30"
               >
                 <MessageCircle size={18} /> WhatsApp Us
@@ -182,7 +182,7 @@ export default function Home() {
           </p>
 
           <a
-            href="https://wa.me/9950703030"
+            href="https://wa.me/+919950703030"
             className="mt-6 inline-block bg-green-600 hover:bg-green-700 transition text-white px-6 py-3 rounded-lg shadow-lg shadow-green-900/30"
           >
             WhatsApp Now
