@@ -154,7 +154,7 @@ export default function Contact() {
                     </h3>
 
                     <a
-                        href="https://wa.me/919950703030"
+                        href="https://wa.me/+919950703030"
                         className="mt-5 inline-block bg-green-600 hover:bg-green-700 transition text-white px-6 py-3 rounded-lg shadow-lg shadow-green-900/30"
                     >
                         Chat on WhatsApp
@@ -165,3 +165,4 @@ export default function Contact() {
         </main>
     );
 }
+
