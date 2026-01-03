@@ -104,8 +104,8 @@ export default function Terms() {
                     </p>
 
                     <p className="mt-2 text-gray-300">
-                        <strong>Email:</strong> info@example.com <br />
-                        <strong>Phone:</strong> +91 XXXXXXXXXX <br />
+                        <strong>Email:</strong> ajaysharma@gmail.com <br />
+                        <strong>Phone:</strong> +91 9950703030 <br />
                         <strong>Location:</strong> Ujjain, Madhya Pradesh, India
                     </p>
                 </div>
@@ -114,3 +114,4 @@ export default function Terms() {
         </main>
     );
 }
+
